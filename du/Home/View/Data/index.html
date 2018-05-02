@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>输出数据</title>
+ 	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+ </head>
+ <body>
+ 	<table>
+ 		<th>ID</th>
+ 		<th>USER</th>
+ 		<th>AJAX_del</th>
+ 		<th>DEL</th>
+<volist name="data" id="user">
+ 		<tr>
+ 			<td>{$user[id]}</td>
+ 			<td>{$user[name]}</td>
+ 			<td><span onclick="del(this,{$user[id]})">删除</span></td>
+ 			<td><a href="{:U('del',array('id'=>$user[id]))}">删除</a></td>
+ 		</tr>
+ 		</volist>
+ 	</table>
+
+ 	<!-- 添加 -->
+
+ </body>
+ <script>
+ 	function del(obj,id){
+ 		
+ 		$.post("{:U('ajax_del')}",{id:id},function(data){
+ 			alert(data);
+ 			alert(data.indo);
+ 			alert(data.code);
+ 		},'json');
+ 	}
+ </script>
+ </html>
